@@ -1,0 +1,213 @@
+\documentclass[12pt]{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+
+% Set page size and margins
+% Replace `letterpaper' with`a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Navier-Stokes Equations}
+\author{Neil Slavishak - MATH 0413}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The Navier-Stokes Equations are partial differential equations used to
+describe the motion of viscous fluids. On a basic level, the equations derive from Newton's Laws of Motion, using the concepts of conservation of momentum, energy, and mass. The equations also derive from various ideas in fluid mechanics like diffusion, flow patterns, and stress. However, the biggest breakthrough that led to these equations, differentiating them from the Euler Equations, was the implementation of viscosity. Although not solvable, the equations are used in the branch of fluid dynamics called computational fluid dynamics (CFD) by approximating general solutions. In this paper, we break down the equations into its parts and examine each piece, then build onto each piece to achieve the full equations with the knowledge of how they are designed and what their purpose is.
+\end{abstract}
+\section{History of the Equations}
+The idea of fluid mechanics began many centuries ago, dating all the way back to Ancient Greece and Archimedes. Around 250 BC, Archimedes formulated laws concerning buoyancy. It would take many years for more substantial observations. For example, Leonardo da Vinci would make large strides in the field, discussing concepts like drag and conservation of mass in one-dimensional flow. The idea would be truly refined in 1687 by Isaac Newton, in which the idea that friction and viscosity lowered the velocity of liquids was noted. \cite{Navier2} Eventually, under the teachings of Daniel Bernoulli, equations would be formed by Leonhard Euler in 1757, named the Euler Equations \cite{Euler}: 
+
+\begin{center} 
+Continuity: $\frac{\partial \rho u}{\partial x} + \frac{\partial \rho v}{\partial y} + \frac{\partial \rho w}{\partial z} = 0$\end{center}
+
+\begin{center} X-Momentum: $\frac{\partial \rho u^2}{\partial x} + \frac{\partial \rho uv}{\partial y} + \frac{\partial \rho uw}{\partial z} =  -\frac{\partial p}{\partial x}$ \end{center}
+
+\begin{center}Y-Momentum: $\frac{\partial \rho uv}{\partial x} + \frac{\partial \rho v^2}{\partial y} + \frac{\partial \rho vw}{\partial z} = -\frac{\partial p}{\partial y}$\end{center}
+
+\begin{center}Z-Momentum: $\frac{\partial \rho uw}{\partial x} + \frac{\partial \rho vw}{\partial y} + \frac{\partial \rho w^2}{\partial z} = -\frac{\partial p}{\partial z}$\end{center}
+
+\begin{center} Coordinates: $(x,y,z)$, Velocity: $(u,v,w)$, Density: $\rho$, Pressure: $p$\end{center} 
+
+Although the equations formed a solid basis for the idea of describing the movement of liquids, these equations lacked the idea of viscosity as well as an equation for the conservation of energy. Throughout the 19th century, Claude-Louis Navier and Sir George Stokes would add these ideas to the equations, leading to the creation of the Navier-Stokes Equations \cite{Navier}:
+\begin{center}Continuity: $\frac{\partial \rho }{\partial t} + \frac{\partial \rho u}{\partial x} + \frac{\partial \rho v}{\partial y} + \frac{\partial \rho w}{\partial z} = 0$ \end{center}
+\begin{center}X-Momentum: $\frac{\partial \rho u}{\partial t} + \frac{\partial \rho u^2}{\partial x} + \frac{\partial \rho uv}{\partial y} + \frac{\partial \rho uw}{\partial z} = \rho g_x - \frac{\partial p}{\partial x} + \mu(\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}+\frac{\partial^2 u}{\partial z^2})$\end{center}
+\begin{center}Y-Momentum: $\frac{\partial \rho v}{\partial t} + \frac{\partial \rho uv}{\partial x} + \frac{\partial \rho v^2}{\partial y} + \frac{\partial \rho vw}{\partial z} = \rho g_y - \frac{\partial p}{\partial y} + \mu(\frac{\partial^2 v}{\partial x^2}+\frac{\partial^2 v}{\partial y^2}+\frac{\partial^2 v}{\partial z^2})$\end{center}
+\begin{center}Z-Momentum: $\frac{\partial \rho z}{\partial t} + \frac{\partial \rho uw}{\partial x} + \frac{\partial \rho vw}{\partial y} + \frac{\partial \rho w^2}{\partial z} = \rho g_z - \frac{\partial p}{\partial z} + \mu(\frac{\partial^2 w}{\partial x^2}+\frac{\partial^2 w}{\partial y^2}+\frac{\partial^2 w}{\partial z^2})$\end{center}
+\begin{center}Energy: $ \rho[\frac{\partial h}{\partial t}+ \nabla \cdot (hu)] = -\frac{-dp}{dt}+\nabla \cdot (k\nabla T)+\Phi$\end{center}
+\begin{center}Coordinates: $(x,y,z)$, Velocity: $(u,v,w)$, Time: $t$, Density: $\rho$, Pressure: $p$, Viscosity: $\mu$, Gravity: $g$, Enthalpy: $h$, Thermal Conductivity: $T$, Dissipation, $\Phi$
+\end{center}
+
+\section{Basics of Fluid Mechanics}
+The basics of fluid mechanics derive from Newton's laws of motion. As seen above with the Navier-Stokes Equations themselves, equations exist for the laws of conservation of mass, momentum, and energy.
+
+The conservation of mass law states that mass can neither be
+created nor destroyed. In fluid mechanics, this law is also called the law of continuity. This is because the density, volume, and shape of a fluid can change, hence it is more difficult to use this law. Instead, the continuity equation derives from the mass flow rate, which is set to 0 to follow the conservation of mass law \cite{Navier2}:
+\begin{center}$m = \rho AV$\end{center}
+\begin{center}$\frac{D\rho}{Dt} + \rho(\nabla \cdot V) = 0$\end{center}
+\begin{center} Material Derivative: $\frac{D}{Dt}$, Mass Flow Rate: $m$, Density: $\rho$, Area: $A$, Velocity: $V = (u,v,w)$, Time: $t$\end{center}
+
+Note that for incompressible fluids, density is constant which leads to a simpler version:
+\begin{center}$\nabla \cdot V = 0$\end{center}
+
+The conservation of momentum law states that momentum if no forces act on an object, momentum is conserved. In physics, the conservation of momentum is found by finding the sum of the forces acting on a system and setting it equal to 0. Force is equal to the rate of change of the momentum, which can be used to determine the force of a liquid \cite{Momentum}:
+\begin{center}$F = \frac{dp}{dt} = \frac{dmV}{dt} = V\frac{d\rho V}{dt}=\rho V\frac{dV}{dt}$\end{center}
+
+Using the mass flow rate formula, we then obtain:
+\begin{center}$F = \rho AV^2$\end{center}
+
+The conservation of energy law states that the total energy of a system remains constant over time. In mechanics, energy is categorized into kinetic and potential energy. Work is also found by multiplying the force and the distance of a system together. Their equations for fluid mechanics are \cite{Energy}: 
+\begin{center}$\Delta W = F_1dx_1-F_2dx_2=p_1A_1dx_1-p_2A_2dx_2=(p_1-p_2)dV$\end{center}
+\begin{center}$\Delta K = \frac{1}{2}m_2v_2^2-\frac{1}{2}m_1v_1^2 = \frac{1}{2}\rho dV(v_2^2-v_1^2)$\end{center}
+\begin{center}$\Delta U = m_2gh_2-m_1gh_1 = \rho dVg(h_2-h_1)$\end{center}
+\begin{center}Work: $W$, Kinetic Energy: $K$, Potential Energy: $U$, Force: $F$, Mass: $m$, Velocity: $v$, Area: $A$, Volume: $V$, Pressure: $p$, Density: $\rho$, Gravity: $g$, Height: $h$\end{center}
+
+Using these equations, Bernoulli's principle was formed to describe the conservation of energy in a system of fluids \cite{Bernoulli}:
+\begin{center}$\Delta W = \Delta K + \Delta U$\end{center}
+\begin{center}$(p_1-p_2)dV = \frac{1}{2}\rho dV(v_2^2-v_1^2) + \rho dVg(h_2-h_1)$\end{center}
+\begin{center}$p_1+\frac{1}{2}\rho v_1^2 + \rho gh_1 = p_2+\frac{1}{2}\rho v_2^2 + \rho gh_2$\end{center}
+
+The three conservation laws help define the fundamentals of fluid mechanics, which would later be built upon to obtain the Navier-Stokes Equations.
+
+\section{Euler Equations}
+Before Newton's laws were transformed into the Navier-Stokes equations, Leonhard Euler produced an elementary form first, allowing for later adaptation. Under the teachings of Bernoulli, Euler established equations for conservation of mass and momentum to describe the effects of velocity, pressure, and density on a liquid.
+
+The continuity equation is just a continuation of the transformation of the conservation of mass law to fluid mechanics:
+\begin{center}$\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho v) = 0$\end{center}
+\begin{center}Density: $\rho$, Velocity: v, Time: t\end{center}
+
+For the momentum equations, the derivation is more complex \cite{Momentum}.
+\begin{center} F = ma\end{center}
+\begin{center}$ -[(pA)_2-(pA)_1] = m\frac{dv}{dt} $\end{center}
+\begin{center}$ -[(p+\frac{dp}{dt}dx)A - pA] = m\frac{dv}{dx}\frac{dx}{dt} $\end{center}
+\begin{center}$ -\frac{dp}{dx}dxA = m\frac{dV}{dx}v $\end{center}
+\begin{center}$ -\frac{dp}{dx} = \rho v\frac{dv}{dx} $\end{center}
+\begin{center}Force: $F$, Mass: $m$, Acceleration: $a$, Velocity: $v$, Pressure: $P$, Density: $\rho$\end{center}
+
+Note that this derivation was only for 1-dimensional flow. To allow for multiple dimensional flow, we change the normal derivative to a partial derivative:
+\begin{center}$ -\frac{\partial p}{\partial x} = \rho v\frac{\partial v}{\partial x} $\end{center}
+
+Now we have the Euler Equations, which will show to be the building blocks for the Navier-Stokes Equations.
+
+\section{Viscous Stress Tensor}
+As stated earlier, the Navier-Stokes Equations mainly added the concept of viscosity to the Euler equations, making them more realistic. This was achieved by utilizing the viscous stress tensor.
+A tensor is used to describe multi-linear relationships between objects and a vector space. The relationships tensors describe depend on their dimension, also referred to as their rank. For example, the stress tensor is a second rank tensor, or a matrix \cite{Tensors}:
+
+\begin{center} $[\sigma_{ij}] = \begin{bmatrix} \sigma_{11} & \sigma_{12} & \sigma_{13}\\ \sigma_{21} & \sigma_{22} & \sigma_{23}\\ \sigma_{31} & \sigma_{32} & \sigma_{33}\end{bmatrix}$
+\end{center}
+
+Furthermore, a zero rank tensor is a scalar and a first rank tensor is a vector. There also exists an identity tensor, called the Kronecker delta:
+
+\begin{center}$ \delta_{ij} = \begin{cases} 1 & i=j\\ 0 & i\neq j\end{cases}$\end{center}
+
+We can now apply this concept to derive the momentum equations for the Navier-Stokes Equations. As stated with the conservation of momentum law, force equals the product of mass and acceleration, which is also the product of the density of a liquid and the change in volume over time. We can split the sum of forces into two parts:
+\begin{center}$ \rho \frac{dV}{dt} = f_{body} + f_{surface}$
+\end{center}
+The force exerted on the body in this case is just the force of gravity, so $f_{body}$ is just the product of density and gravitational acceleration. The force exerted on the surface is the combination of the force of pressure and viscosity. This can be written as:
+\begin{center}$f_{surface} = f_{pressure}+f_{viscosity} = \nabla \cdot \tau_{ij}$\end{center}
+
+In this case, $\tau_{ij}$ is the stress tensor defined in a Newtonian fluid, so the stress tensor depends on the rate-of-strain tensor. This tensor derives from the deformation tensor, which is split up into its symmetric and anti-symmetric parts (note that a matrix is symmetric when its transposed form equals its default form) \cite{Stress}.
+
+\begin{center}$ \tau_{ij} = -p\delta_{ij} + 2\mu e_{ij} + \delta_{ij} \lambda \nabla \cdot V$\end{center}
+\begin{center}$ e_{ij} = \frac{1}{2}(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i})$\end{center}
+\begin{center}$ \tau_{ij} = -p\delta_{ij} + \mu (\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i}) + \delta_{ij} \lambda \nabla \cdot V$\end{center}
+\begin{center}Pressure: $p$, Coefficient of Viscosity: $\mu$, Scalar: $\lambda$, Velocity: $V$\end{center}
+
+With this, we can now combine the forces exerted on the body and on the surface.
+
+\begin{center}$ f = \rho \frac{dV}{dt} = \rho g + \nabla \cdot \tau{ij}$
+\end{center}
+
+Which can be simplified to obtain the Navier-Stokes equation for momentum.
+
+\begin{center}$ \rho \frac{dV}{dt} = \rho g - \nabla p + \mu \nabla^2 V$
+\end{center}
+\begin{center}Density: $\rho$, Gravity: $g$, Laplacian Operator: $\nabla^2$
+\end{center}
+
+\section{Reynolds Number}
+The Reynolds number is defined as the ratio of inertial forces to viscous forces. In short, this means that it measures how turbulent the flow of a liquid is. The formula for Reynolds number is \cite{Navier3}:
+\begin{center}$ Re = \frac{\rho u L}{\mu}$\end{center}
+\begin{center} Density: $\rho$, Velocity: $u$, Characteristic Length: $L$, Viscosity: $\mu$\end{center}
+
+A low Reynolds number implies creeping flow, in which in the extreme, implies laminar flow, as the inertial forces are deemed negligible compared to the viscous forces. A higher Reynolds number implies more turbulent flow, as the opposite ratio occurs. In the case of a low Reynolds number, the sum of the forces that derives the Navier-Stokes momentum equation is changed, as the forces exerted on the body are no longer needed. Therefore, the formula is changed as follows \cite{Reynolds}:
+\begin{center}$ \rho \frac{dV}{dt} = -\nabla p + \mu \nabla^2 V$
+\end{center}
+
+In the case of a high Reynolds number, the results are different. Firstly, a high Reynolds number may lead to the result of the Euler Equations, since viscosity is not used. The result of a high Reynolds number also allows for the use of the Reynolds Averaged Navier-Stokes equations (RANS). This equation is written as \cite{RANS}:
+
+\begin{center} $ \rho \Bar{u_j}\frac{\partial \Bar{u_i}}{\partial x_j} = \rho \Bar{f_i} + \frac{\partial}{\partial x_j}[-\Bar{p}\delta_{ij} + \mu (\frac{\partial \Bar{u_i}}{\partial x_j}+\frac{\partial \Bar{u_j}}{\partial x_i})-\rho \Bar{u'_i}\Bar{u'_j}]$
+\end{center}
+
+Although not in the equation, Reynolds number provides a great deal of information concerning the Navier-Stokes equations as to what can be eliminated and what behavior to expect from a certain liquid.
+
+\section{Thermodynamics in Fluid Mechanics}
+Now that we have the equations for mass and momentum conservation, we need the equation for energy conservation. The first law of thermodynamics for fluid mechanics states that the increase in the energy of a system is equal to the work done on the system and the heat added to the system:
+
+\begin{center}$ dE_t = dW + dQ$\end{center}
+This equation can be rewritten to obtain the Navier-Stokes energy equation \cite{Energy}:
+
+\begin{center}$ \rho[\frac{\partial H}{\partial t}+ \nabla \cdot (Hu)] = -\frac{-dp}{dt}+\nabla \cdot (k\nabla T)+\Phi$\end{center}
+\begin{center}Density: $\rho$, Enthalpy: $H$, Velocity: $u$, Pressure: $p$, Thermal Conductivity: $k$, Temperature: $T$, Dissipation, $\Phi$
+\end{center}
+
+Enthalpy is defined as the measurement of energy in a thermodynamic system. The equation for enthalpy is as follows \cite{Enthalpy}:
+
+\begin{center}$H = E + pV$
+\end{center}
+
+In the Navier-Stokes energy equation, we take the change in enthalpy, or the change in energy, over time and we also use enthalpy in the convection term, which is the divergence of the product of the enthapy and the velocity. In thermodynamics, convection is the transfer of heat from one place in a fluid to another. The heat transfer rate can be found to describe convection in a system:
+
+\begin{center}$ Q = hA\Delta T$\end{center}
+\begin{center}Heat Transfer Coefficient: $h$, Surface Area: $A$, Temperature: $T$\end{center}
+
+Thermal conductivity is defined as the ability of a material to transfer heat. In thermodynamics, the formula for thermal conductivity is as follows:
+
+\begin{center} $k = \frac{Qd}{A\Delta T}$
+\end{center}
+\begin{center} Distance: $d$
+\end{center}
+
+Thermal conductivity is used in the diffusion term of the Navier-Stokes energy equation, which is the divergence of the product of the thermal conductivity and the gradient of the temperature. Diffusion is defined as the movement of molecules in a fluid from high concentration to low concentration. The dissipation of a system is defined as the process by which work done by a fluid due to the action of shear forces is transformed into heat. Using all of these ideas, we can use the Navier-Stokes energy equation to describe the transfer of heat in a liquid.
+
+\section{Applications of the Navier-Stokes Equations}
+The Navier-Stokes equations are used in many areas of fluid mechanics. Examples of its uses include modeling weather, ocean currents, water flow in a pipe, and air flow around a wing. They are also used in the design of cars and various aircraft, as well as the study of pollution. In all cases, solutions can only be found using computers. This means that the Navier-Stokes Equations fall under the field of computational fluid dynamics (CFD). The Navier-Stokes Equations do not have closed-form solutions, meaning that only approximations can be made. \newpage
+\begin{thebibliography}{15}
+\bibitem{Bernoulli} 
+{\em 14.8: Bernoulli's Equation},
+https://phys.libretexts.org/Bookshelves
+\bibitem{Tensors}
+Burnley, Pamela. {\em Tensors, Stress, Strain, Elasticity}. https://serc.carleton.edu
+/NAGTWorkshops/mineralogy/mineralphysics/tensors.html.
+\bibitem{Energy}
+{\em Energy Equations: The Navier-Stokes Method of Analysis}. Cadence
+\bibitem{Stress}
+Celli Vittorio. {\em The Stress Tensor and the Navier-Stokes Equation}. 28 Sep. 1997, https://galileo.phys.virginia.edu/classes/311/notes/fluids2/node3.html
+\bibitem{Momentum}
+{\em Conservation of Momentum}. NASA: Glenn Research Center, 13 May 2021, https://www.grc.nasa.gov/www/k-12/airplane/conmo.html
+\bibitem{Enthalpy}
+{\em Enthalpy}. NASA: Glenn Research Center, 13 May 2021, https://www.grc.nasa.gov.
+\bibitem{Euler}
+{\em Euler Equations}. NASA: Glenn Research Center, 13 May 2021
+\bibitem{Navier}
+{\em Navier Stokes Equation}. BYJU's, https://byjus.com
+\bibitem{Reynolds}
+{\em Reynolds Number}. BYJU's, https://byjus.com/physics/reynolds-number/
+\bibitem{RANS}
+{\em The Reynolds-Averaged Navier-Stokes (RANS) Equations and Models} Cadence, https://resources.system-analysis.cadence.com/blog
+\bibitem{Navier2}
+{\em What Are Navier-Stokes Equations?: SimWiki}. SimScale, 11 Aug. 2023
+\bibitem{Navier3}
+{\em What Are the Navier-Stokes Equations?}. COSMOL, 22 Feb. 2017.
+\end{thebibliography}
+\end{document}

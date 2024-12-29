@@ -1,0 +1,421 @@
+.body{
+    background-color: #bed9e1;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    border-bottom: 1px solid #ccc; 
+    border-color: black;
+    background-color: white;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width:98%;
+}
+
+.navbar-left {
+    flex: 1; /* Takes up space on the left */
+}
+
+.navbar-left img {
+    max-width:160px;
+    height:auto;
+    margin-top: -20px;
+    margin-left: -20px;
+}
+
+.navbar-left h3 {
+    margin-top: 10px;
+    margin-bottom: -10px;
+    margin-left: -10px;
+}
+
+/* Center Title */
+.center-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Center the title horizontally */
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.navbar-right ul {
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Display items in a row */
+}
+
+.navbar-right li {
+    position: relative;
+    margin-left: 20px; /* Space between tabs */
+}
+
+.navbar-right a {
+    text-decoration: none; /* Remove underline */
+    color: black; /* Change to desired color */
+    font-weight: bold; /* Make it bold */
+}
+
+.navbar-right a:hover {
+    color: gray;
+}
+
+.portfolio-sections {
+    display: flex;
+    justify-content: space-around; /* Space between items */
+    margin-top: 100px;
+    
+}
+
+.section {
+    flex: 1; /* Make each div take equal space */
+    padding: 20px;
+    text-align: center;
+}
+
+.left-section {
+    display: flex; /* Flexbox to center the image */
+    flex-direction: column;
+    justify-content: center; /* Center image horizontally */
+    align-items: center; /* Center image vertically */
+}
+
+.left-section img{
+    max-width: 75%;
+    border-radius: 15px;
+}
+
+.left-section-desc {
+    margin-top: 20px; /* Space between the image and the text */
+    font-size: 25px; /* Font size */
+    text-align: center; /* Center text */
+    
+}
+
+.right-section {
+    display: flex;
+    flex-direction: column; /* Stack sections vertically */
+}
+
+.portfolio-button {
+    display: inline-block;
+    background-color: white; /* Light background color with transparency */
+    padding: 10px 20px; /* Add padding around the text */
+}
+
+.top-section {
+    flex: 1; /* Make the Top section take equal space */
+    display: flex; /* Enable Flexbox on this section */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    position: relative; /* Position for background image */
+    padding: 40px; /* Add padding */
+    background-image: url('resume.jpg'); /* Background image for Top */
+    background-size: cover; /* Cover the entire section */
+    color: white; /* Text color for better contrast */
+    margin-bottom: 20px; /* Spacing between sections */
+    margin-top: 20px; /* Space above the section */
+    text-align: center; /* Center text */
+    border: 3px solid white; /* Change the border color and width as needed */
+    border-radius: 15px; /* Adjust the value for how round the corners should be */
+    max-width: 100%; /* Ensure the image is responsive */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s;
+}
+
+.middle-section {
+    flex: 1; /* Make the Bottom section take equal space */
+    display: flex; /* Enable Flexbox on this section */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    position: relative; /* Position for background image */
+    padding: 40px; /* Add padding */
+    background-image: url('project.jpg'); /* Background image for Bottom */
+    background-size: cover; /* Cover the entire section */
+    background-position: center; /* Center the background image */
+    color: white; /* Text color for better contrast */
+    margin-bottom: 20px; /* Spacing between sections */
+    margin-top: 30px; /* Space above the section */
+    text-align: center; /* Center text */
+    border: 3px solid white; /* Change the border color and width as needed */
+    border-radius: 15px; /* Adjust the value for how round the corners should be */
+    max-width: 100%; /* Ensure the image is responsive */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s;
+}
+
+.bottom-section {
+    flex: 1; /* Make the Bottom section take equal space */
+    display: flex; /* Enable Flexbox on this section */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    position: relative; /* Position for background image */
+    padding: 40px; /* Add padding */
+    background-image: url('aboutMe.jpg'); /* Background image for Bottom */
+    background-size: cover; /* Cover the entire section */
+    background-position: center; /* Center the background image */
+    color: white; /* Text color for better contrast */
+    margin-bottom: 20px; /* Spacing between sections */
+    margin-top: 30px; /* Space above the section */
+    text-align: center; /* Center text */
+    border: 3px solid white; /* Change the border color and width as needed */
+    border-radius: 15px; /* Adjust the value for how round the corners should be */
+    max-width: 100%; /* Ensure the image is responsive */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s;
+}
+
+.top-section h2,
+.middle-section h2
+.bottom-section h2 {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center the contents horizontally */
+    align-items: center; /* Center the contents vertically */
+    margin: 0; /* Remove default margin */
+    height: 100px;
+}
+
+.top-section h2 a,
+.middle-section h2 a,
+.bottom-section h2 a {
+    color: black;
+    text-decoration: none;
+    font-size: 2em;
+    margin: 0;
+}	
+
+.top-section:hover, .middle-section:hover, .bottom-section:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Adds shadow on hover */
+}
+
+.resume-section {
+    text-align: center;
+    margin-top: 150px;
+}
+
+.resume-image img {
+    max-width: 50%;
+    height: auto;
+    border: 1px solid #000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.coursework-section {
+    text-align: center;
+    margin: 40px 0;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 5px 5px 8px rgb(120,120,120);
+    border-radius: 8px;
+    border: 1px solid #000;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.coursework-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.coursework-columns {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 20px;
+}
+
+.coursework-column {
+    text-align: left;
+    max-width: 600px;
+}
+
+.coursework-column h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.coursework-column ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.coursework-column li {
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+
+.project-container {
+    display: flex; /* Use Flexbox to arrange items side by side */
+    align-items: center; /* Vertically center items */
+    justify-content: center; /* Center the container */
+    width: 80%; /* Set a width for the container */
+    margin: 120px auto 30px; /* Center the container horizontally */
+    padding: 50px; /* Add padding */
+    border: 1px solid #ccc; /* Optional: border around the container */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional: shadow for a slight lift effect */
+    background-color: white;
+}
+
+.project-name {
+    flex: 1; /* Allow the title to take available space */
+    text-align: center; /* Center the title text */
+    font-size: 1.3em; /* Larger font size for the project title */
+}
+
+.project-name a {
+    text-decoration: none; /* Remove underline from link */
+    color: #333; /* Color for the project title */
+}
+
+.project-name a:hover {
+    color: gray;
+}
+
+.project-image-container {
+    flex: 1; /* Allow the image container to take available space */
+    display: flex; /* Use Flexbox to center the image */
+    justify-content: center; /* Center the image horizontally */
+}
+
+.project-image {
+    width: 95%; /* Set a fixed width for the image */
+    height: auto; /* Maintain aspect ratio */
+    border: 1px solid #ccc;
+    border-color: gray;
+}
+
+.project-section-title {
+    text-align:center;
+    font-size: 2em;
+    padding: 20px;
+}
+
+.project-section {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between columns */
+    align-items: flex-start; /* Align items to the start (top) */
+}
+
+.project-section a{
+    color: #5c5a59;
+}
+
+.project-section a:hover{
+    color: darkGray;
+}
+
+.text-column {
+    flex: 1; /* Allow the text column to take available space */
+    text-align: left; /* Left-align text */
+    padding: 30px;
+}
+
+.image-column {
+    flex: 1; /* Allow the image column to take available space */
+    display: flex; /* Use flexbox for centering the image */
+    justify-content: center; /* Center the image horizontally */
+}
+
+.two-image-column {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center the images horizontally */
+    align-items: center; /* Center the images vertically if needed */
+}
+
+.navier-overview-img {
+    width: 550px; /* Control the image size */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 50px;
+}
+
+.navier-method-img {
+    width: 700px; /* Control the image size */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px;
+}
+
+.predator-overview-img {
+    width: 275px; /* Control the image size */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 50px;
+}
+
+.predator-method-img {
+    width: 350px; /* Control the image size */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 10px;
+    margin-bottom: 20px;
+}
+
+.predator-link-img {
+    width: 500px; /* Control the image size */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 50px;
+}
+
+.time-overview-img {
+    width: 700px; /* Control the image size */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 50px;
+}
+
+.time-method-img {
+    width: 650px; /* Control the image size */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 10px;
+    margin-bottom: 20px;
+}
+
+.time-link-img {
+    width: 500px; /* Control the image size */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 50px;
+}
+
+.about-me {
+    top: 300px;
+    max-width: 80%
+    margin-left: 200px;
+    text-align: center;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    border-top: 1px solid #ccc; /* Optional: gives a divider line at the top */
+    border-color: black;
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
+.footer-socials {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-socials li {
+    margin: 0 10px;
+}
+
+.footer-socials li a {
+    text-decoration: none;
+}
+
+
+

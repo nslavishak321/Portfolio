@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Projects</title>
+	<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="body">
+
+  <header> 
+    <header class="navbar">
+        
+	<nav class="navbar-left">
+	    <img src="pitt.png" alt="Pitt Logo">
+	    <h3>Neil Slavishak</h3>
+	</nav>
+
+	<h1 class="center-title">Projects</h1>
+
+        <nav class="navbar-right">
+            <ul>
+		<li><a href="index.html">Home</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="projects.html">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h2 class="project-section-title">Time-Series Forecasting Project</h2>
+
+    <section class="project-section">
+	<div class="text-column">
+	    <h2>Project Overview</h2>
+	    <p>This project explores the concept of time-series forecasting and how it can be used to effectively predict trends for future data based on existing data. To show this, I decided to use data based on a topic that I am passionate about, which is the lack of a presence of some European soccer leagues in the United States. At the end, I use the forecasts to argue which leagues should try to increase their influence in the United States both for economic and popularity gain.</p>
+	</div>
+	<div class="image-column">
+		<img src="time1.png" alt="Time-Series Forecasting Figure" class="time-overview-img">
+	</div>
+    </section>
+
+    <section class="project-section">
+	<div class="image-column">
+	    <img src="time2.png" alt="Google Trends" class="time-method-img">
+	</div>
+	<div class="text-column">
+	    <h2>Objectives and Methodologies</h2>
+	    <p>The objective of this project was to accurately provide forecasts of the search volume statistics for each league. To obtain existing data to base this off of, I used Goggle Trends. I decided to a five-year period to account for the popularities both before and after COVID to try and provide a general prediction. Although many time-series forecasting methods are available, I decided to use the SARIMAX method to effectively account for the seasonality of the data, which occurs due to each league having a two to three month offseason. I also used grid search to obtain the best possible combination of parameters for the model. Various other Python extensions used were Pandas and Matplotlib for simple data wrangling and visualization. </p>
+	</div>
+    </section>
+
+    <section class="project-section">
+	<div class="text-column">
+	    <h2>Links</h2>
+	    <b>Paper: <a href="Time_Forecasting_Project.pdf" target="_blank">Project Paper</a></b><br>
+	    <b>Python Files: <a href="Code.zip" target="_blank">Code</a></b>
+	</div>
+	<div class="image-column">
+		<img src="time3.png" alt="Time-Series Forecasting" class="time-link-img">
+	</div>
+    </section>
+
+
+    <footer class="footer">
+	<p>&copy; 2024 Neil Slavishak</p>
+	<p>Contact: <a href="mailto:nslavishak@gmail.com">nslavishak@gmail.com</a></p>
+      	<ul class="footer-socials">
+            <li><a href="https://www.linkedin.com/in/neil-slavishak-471067344/">LinkedIn</a></li>
+      	</ul>
+    </footer>
+</body>

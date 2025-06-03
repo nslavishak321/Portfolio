@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Projects</title>
+	<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="body">
+
+  <header> 
+    <header class="navbar">
+        
+	<nav class="navbar-left">
+	    <img src="pitt.png" alt="Pitt Logo">
+	    <h3>Neil Slavishak</h3>
+	</nav>
+
+	<h1 class="center-title">Stock Price Prediction Project</h1>
+
+        <nav class="navbar-right">
+            <ul>
+		<li><a href="index.html">Home</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="projects.html">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h2 class="project-section-title">Time-Series Forecasting Project</h2>
+
+    <section class="project-section">
+	<div class="text-column">
+	    <h2>Project Overview</h2>
+	    <p>I developed a stock price prediction model using PyTorch and an LSTM (Long Short-Term Memory) neural network. The model forecasts the prices of three selected stocks one month into the future based on their historical closing prices. I preprocessed the time series data, normalized the values, and structured it into sequences suitable for LSTM input. After training the model, I evaluated its performance using metrics such as RMSE and visualized predicted vs. actual prices. This project demonstrates my ability to apply deep learning techniques to real-world financial forecasting tasks.</p>
+	</div>
+	<div class="image-column">
+		<img src="stock2.png" alt="Time-Series Forecasting Figure" class="time-overview-img">
+	</div>
+    </section>
+
+    <section class="project-section">
+	<div class="image-column">
+	    <img src="stock1.png" alt="Google Trends" class="time-method-img">
+	</div>
+	<div class="text-column">
+	    <h2>Objectives and Methodologies</h2>
+	    <p>The primary objective of this project was to predict stock prices one month into the future using historical data, leveraging the sequential modeling capabilities of LSTM networks. I began by collecting daily closing prices for three different stocks and performed data cleaning and normalization to ensure consistency and improve model performance. The time series data was then structured into rolling windows to create input-output sequences for supervised learning. I implemented an LSTM model in PyTorch, chosen for its effectiveness in capturing long-term dependencies in temporal data. Hyperparameters such as learning rate, number of layers, and hidden units were tuned to optimize model accuracy. The model was trained and validated using a sliding window approach, and its performance was assessed using Root Mean Squared Error (RMSE). This methodology allowed for dynamic learning from past trends and aimed to provide realistic forecasts useful for financial analysis and decision-making.</p>
+	</div>
+    </section>
+
+    <section class="project-section">
+	<div class="text-column">
+	    <h2>Links</h2>
+	    <b>Paper: <a href="LSTM_Stock_Price_Prediction_Project.pdf" target="_blank">Project Paper</a></b><br>
+	    <b>Python Files: <a href="LSTMStockPrediction.py" target="_blank">Code</a></b>
+	</div>
+    </section>
+
+
+    <footer class="footer">
+	<p>&copy; 2024 Neil Slavishak</p>
+	<p>Contact: <a href="mailto:nslavishak@gmail.com">nslavishak@gmail.com</a></p>
+      	<ul class="footer-socials">
+            <li><a href="https://www.linkedin.com/in/neil-slavishak-471067344/">LinkedIn</a></li>
+      	</ul>
+    </footer>
+</body>
